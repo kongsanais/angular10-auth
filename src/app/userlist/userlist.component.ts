@@ -7,14 +7,15 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
+
   users = null;
   constructor(private accountService: AccountService) {}
 
-  ngOnInit() {
-    this.accountService.getAll()
-        .pipe(first())
-        .subscribe(users => this.users = users);
-  }
+    ngOnInit() {
+      this.accountService.getAll()
+          .pipe(first())
+          .subscribe(users => this.users = users);
+    }
 
     deleteUser(id: string) {
         const user = this.users.find(x => x.id === id);
